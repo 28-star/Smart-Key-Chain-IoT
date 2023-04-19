@@ -11,7 +11,7 @@ This is a simple project to build a smart keychain that will help you to locate 
 - [Circuit Diagram](#circuit-diagram)
 - [Software Setup](#software-setup)
 - [How It Works](#how-it-works)
-- [Instructions](#usage-instructions)
+- [Usage Instructions](#usage-instructions)
 
 ## Components Required
 
@@ -28,7 +28,8 @@ This is a simple project to build a smart keychain that will help you to locate 
 - Arduino IDE
 - Ubidots account for data publishing and hosting the webpage
 - Libraries:
-  - WiFi.h
+  - UbidotsESPMQTT.h
+  - pitches.h
 
 ## Schematic Diagram
 
@@ -38,7 +39,7 @@ This is a simple project to build a smart keychain that will help you to locate 
 
 1. Connect the VCC of the active buzzer to the 3.3V of the ESP8266 board.
 2. Connect the GND of the active buzzer to the GND of the ESP8266 board.
-3. Connect the I/O of the active buzzer to the RX pin of the ESP8266 board.
+3. Connect the I/O of the active buzzer to the D8 pin of the ESP8266 board.
 4. Connect the RST to the D0 of the ESP8266 board to enable sleep mode.
 
 We don't show the battery connections in the schematic diagram. Please refer to the [circuit diagram](#circuit-diagram) for more information.
@@ -50,18 +51,16 @@ We don't show the battery connections in the schematic diagram. Please refer to 
 ## Software Setup
 
 1. Create an account on the Ubidots website (<https://ubidots.com/>).
-2. Create a new device on the Ubidots platform and add a new variable. Take note of the following values:
-    - UBIDOTS_TOKEN: your Ubidots token.
-    - DEVICE_LABEL: name of the device.
-    - VARIABLE_LABEL: name of the variable.
+2. Create a new device (named **"nodemcu"**) on the Ubidots platform and add new variables (**"toggle"**, **"tune_to_play"**). Take note of the following values:
+    - TOKEN: your Ubidots token.
+    - WIFI_NAME: your WiFi network's name.
+    - WIFI_PASSWORD: your WiFi network's password.
 3. Open the Arduino IDE and install the required libraries.
 4. Copy and paste the code from [src/code.ino](src/code.ino) into a new sketch.
 5. Replace the following values in the code with your own:
-    - UBIDOTS_TOKEN
-    - DEVICE_LABEL
-    - VARIABLE_LABEL
-    - ssid: your WiFi network name
-    - password: your WiFi network password
+    - TOKEN
+    - WIFI_NAME
+    - WIFI_PASSWORD
 6. Upload the code to the ESP8266 board.
 7. Open the Serial Monitor to see the status of the board.
 8. Control the smartkey using the webpage hosted on Ubidots.
@@ -76,3 +75,5 @@ The ESP8266 based smartkey has a buzzer which can be activated by clicking on th
 2. Log in to your Ubidots account.
 3. Open the webpage hosted on the internet using Ubidots.
 4. Activate the buzzer using the toggle button on the webpage.
+
+## Acknowledgements
