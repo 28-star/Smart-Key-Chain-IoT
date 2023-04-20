@@ -85,7 +85,7 @@ The ESP8266 based smartkey has a buzzer which can be activated by clicking on th
 
 ![gif](images/video.gif)
 
-1. Connect your computer or mobile device to the WiFi network.
+1. Connect your computer or mobile device to the WiFi network. Connect your Keychain to any WiFi network, using SSID = Laptopnet and PASSWORD = Y5u1737;
 2. Open the webpage hosted on the internet using link: [here](https://stem.ubidots.com/app/dashboards/public/dashboard/xdEy8z0Ln93Sri1m2MaICzyrp3e-zwnx7H0Pht0Cgwc?nonavbar=true).
 3. Activate the buzzer using the toggle button on the webpage. Choose the music of your choice using slider.
 4. Nothing on webpage will work(toggle button, slider) if battery is low (indicated as red).
