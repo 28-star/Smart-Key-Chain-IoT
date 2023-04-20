@@ -52,8 +52,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
         }
       
         if(song_to_play == '1' || song_to_play == '2' || song_to_play == '3' || song_to_play == '4') {
-            buzzing=false; Serial.println("*********");
-            client.add("toggle", 0);  // Insert your variable Labels and the value to be sent
+            buzzing=false;
+            client.add("toggle", 0);  
             client.ubidotsPublish("nodemcu");}
         }
     else noTone(buz_pin);
@@ -507,23 +507,30 @@ void setup() {
     client.setDebug(true);  // Pass a true or false bool value to activate debug messages
     client.wifiConnection(WIFINAME, WIFIPASS);
     client.begin(callback);
-    client.ubidotsSubscribe("nodemcu", "tune_to_play"); client.ubidotsSubscribe("nodemcu", "toggle");  // Insert the dataSource and Variable's Labels
+    client.ubidotsSubscribe("nodemcu", "tune_to_play"); client.ubidotsSubscribe("nodemcu", "toggle");  
+    client.add("is_sleeping", 1);  // Insert your variable Labels and the value to be sent
+    client.ubidotsPublish("nodemcu");
+    delay(500);
 }
 
 void loop() {
     // put your main code here, to run repeatedly:
     if (!client.connected()) {
         client.reconnect();
-        client.ubidotsSubscribe("nodemcu", "tune_to_play"); client.ubidotsSubscribe("nodemcu", "toggle"); // Insert the dataSource and Variable's Labels
+        client.add("is_sleeping", 1);client.ubidotsPublish("nodemcu");
+        delay(500);
+        client.ubidotsSubscribe("nodemcu", "tune_to_play"); client.ubidotsSubscribe("nodemcu", "toggle");
     }
 
     client.loop();
     if(buzzing && song_to_play == '0')beep_sound(buz_pin);
     else if(song_to_play == '0') noTone(buz_pin);
 
-    if (millis()>30000){
+    if (millis()>40000){
+        client.add("is_sleeping", 0);
         client.add("toggle",0);
-        client.ubidotsPublish("nodemcu");delay(1000);
+        client.ubidotsPublish("nodemcu");
+        delay(1000);
         Serial.print("I'm awake, but I'm going into deep sleep mode for ");
         digitalWrite(LED_BUILTIN, HIGH);
         Serial.print(20);
