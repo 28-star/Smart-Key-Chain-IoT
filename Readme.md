@@ -2,6 +2,8 @@
 
 Krishna Bansal, Jitesh Jain
 
+[`Slides`](https://docs.google.com/presentation/d/1wEGLdPJRN7Ao_xidERvoA_JeyREvPERM2uB3gNognCo/edit#slide=id.p) [`Demo`](https://drive.google.com/file/d/1AkTNnDjuiKDXiTWCKV1JOgtfXFBcJ5V3/view?usp=share_link)
+
 This is a simple project to build a smart keychain that will help you to locate your keys with ease. The project uses an ESP8266 board and an active buzzer to make a sound when the keys are nearby.
 
 ## Contents
@@ -72,23 +74,25 @@ We don't show the battery connections in the schematic diagram. Please refer to 
 
 ## How it Works
 
+![image](images/webpage.svg)
+
 The ESP8266 sends MQTT request to Ubidots server for sending and recieving variables' values. Whenever toggle button is pressed, callback function is being called in the code that is responsible for reading the button state and performing corresponding actions. Same goes for slider, whose value is read in callback function and corresponding tune is being played on NodeMCU. After every 40 seconds, Keychain goes into deep sleep mode for 20 seconds. Whenever, it switches its mode code sends the battery status to Ubidots being shown as green for active mode and red for sleep mode. Beep sound can be turned ON/OFF whenever we want. Rest of the melodies can be turned on by preference but they will turn OFF only when they are fully played.
 
 The ESP8266 based smartkey has a buzzer which can be activated by clicking on the toggle button on a webpage hosted on the internet using Ubidots. The ESP8266 board is connected to the WiFi. The webpage also contains various choices of different sounds to play upon activation of the buzzer. It shows a battery widget in leftmost corner indicating whether Keychain is active or in deep_sleep mode.
 
+
 ## Usage Instructions
 
+![gif](images/video.gif)
+
 1. Connect your computer or mobile device to the WiFi network.
-2. Open the webpage hosted on the internet using link: https://stem.ubidots.com/app/dashboards/public/dashboard/xdEy8z0Ln93Sri1m2MaICzyrp3e-zwnx7H0Pht0Cgwc?nonavbar=true.
+2. Open the webpage hosted on the internet using link: [here](https://stem.ubidots.com/app/dashboards/public/dashboard/xdEy8z0Ln93Sri1m2MaICzyrp3e-zwnx7H0Pht0Cgwc?nonavbar=true).
 3. Activate the buzzer using the toggle button on the webpage. Choose the music of your choice using slider.
 4. Nothing on webpage will work(toggle button, slider) if battery is low (indicated as red).
 5. Beep sound is controllable from toggle button, i.e can be turned on/off whenever toggle button is pressed.
-5.For other music tunes, we can turn them on using toggle button but they will turn off only after they are played once completely and hence can’t be turned off in between using toggle or slider.
+6. For other music tunes, we can turn them on using toggle button but they will turn off only after they are played once completely and hence can’t be turned off in between using toggle or slider.
    - If you pressed toggle off when music is playing, it will turn off after one complete play.
    - If you moved the slider to music B when music A is already playing, then next song will be played only after music A ends.
-6. If anywhere during whole operation battery goes down, then everything will turn off and will resume from the point it was being left once battery turns up again.
+7. If anywhere during whole operation battery goes down, then everything will turn off and will resume from the point it was being left once battery turns up again.
 
-
-
-
-## Acknowledgements
+A demo video can be found [here](https://drive.google.com/file/d/1AkTNnDjuiKDXiTWCKV1JOgtfXFBcJ5V3/view?usp=share_link).
