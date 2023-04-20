@@ -96,3 +96,7 @@ The ESP8266 based smartkey has a buzzer which can be activated by clicking on th
 7. If anywhere during whole operation battery goes down, then everything will turn off and will resume from the point it was being left once battery turns up again.
 
 A demo video can be found [here](https://drive.google.com/file/d/1AkTNnDjuiKDXiTWCKV1JOgtfXFBcJ5V3/view?usp=share_link).
+
+## Acknowledgements
+
+https://docs.ubidots.com/v1.6/reference/mqtt-authentication
