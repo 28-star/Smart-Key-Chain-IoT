@@ -4,7 +4,7 @@ Krishna Bansal, Jitesh Jain
 
 [`Slides`](https://docs.google.com/presentation/d/1wEGLdPJRN7Ao_xidERvoA_JeyREvPERM2uB3gNognCo/edit#slide=id.p) [`Demo`](https://drive.google.com/file/d/1AkTNnDjuiKDXiTWCKV1JOgtfXFBcJ5V3/view?usp=share_link)
 
-This is a simple project to build a smart keychain that will help you to locate your keys with ease. The project uses an ESP8266 board and an active buzzer to make a sound when the keys are nearby.
+This is a simple project to build a smart keychain that will help you to locate your keys with ease. The project uses an ESP8266 board and an active buzzer to make a sound when the keys are nearby. Whole setup is deployed on Internet rather than on LAN.
 
 ## Contents
 
